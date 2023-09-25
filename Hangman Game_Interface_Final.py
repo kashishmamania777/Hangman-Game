@@ -122,9 +122,12 @@ class HangmanGUI:
         self.guess_entry.delete(0, tk.END)
     
     def ask_play_again(self):
+        for widget in self.root.winfo_children():
+            widget.pack_forget()
+        
         play_again = messagebox.askquestion("Play Again?", "Do you want to play again?")
         if play_again == "yes":
-            self.__init__(self.root)
+            self.setup_ui()
         else:
             self.root.destroy()
 
